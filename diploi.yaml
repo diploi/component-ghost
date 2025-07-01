@@ -1,0 +1,45 @@
+diploiVersion: v1.0
+type: component
+name: Ghost
+description: Official Diploi component for Ghost
+
+contexts:
+  - name: app
+    identifier: app
+
+hosts:
+  - name: Ghost
+    identifier: app
+    urlFormat: '[label].[default-domain]'
+
+connectionStrings:
+  - name: Internal Address
+    value: http://app.${DIPLOI_NAMESPACE}:3000
+
+environmentVariables:
+  - identifier: database__client
+    defaultValue: mysql
+  - identifier: database__connection__database
+    defaultValue: ghost
+
+images:
+  - identifier: app
+    prebuildImage: ghcr.io/diploi/component-ghost:[tag]
+
+logs:
+  - name: Ghost Log
+    type: log
+    labelSelector: app=app
+
+storage:
+  - identifier: ghost
+    sizeMiB: 8192
+
+dependencies:
+  - identifier: mariadb
+    package: https://github.com/diploi/addon-mariadb#v1.0.0
+    env:
+      include:
+        - MARIADB_HOST:database__connection__host
+        - MARIADB_USER:database__connection__user
+        - MARIADB_PASSWORD:database__connection__password
