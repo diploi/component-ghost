@@ -50,13 +50,13 @@ spec:
             {{- end }}
             - name: url
               value: {{ .Values.hosts.app }}
-            - name: paths__contentPath
-              value: /app/{{ .Values.identifier }}
           volumeMounts:
             {{- if hasKey .Values.storage "code" }}
             - name: app-mount
               mountPath: /app
             {{- end }}
+            - name: ghost-content
+              mountPath: /var/lib/ghost/content
       volumes:
         {{- if hasKey .Values.storage "code" }}
         - name: app-mount
