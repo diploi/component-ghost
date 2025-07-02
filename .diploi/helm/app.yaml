@@ -57,9 +57,14 @@ spec:
             - name: app-mount
               mountPath: /app
             {{- end }}
+            - name: ghost-content
+              mountPath: /var/lib/ghost/content
       volumes:
         {{- if hasKey .Values.storage "code" }}
         - name: app-mount
           hostPath:
             path: {{ .Values.storage.code.hostPath }}
         {{- end }}
+        - name: ghost-content
+          hostPath:
+            path: {{ $.Values.storage.ghost.hostPath }}
