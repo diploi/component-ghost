@@ -46,7 +46,7 @@ spec:
               value: development
             {{- end }}
             - name: url
-              value: {{ .Values.hosts.app }}
+              value: https://{{ .Values.hosts.app }}
             - name: paths__contentPath
               value: /app/{{ .Values.identifier }}
           volumeMounts:
