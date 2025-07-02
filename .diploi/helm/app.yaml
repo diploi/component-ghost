@@ -32,13 +32,10 @@ spec:
         - name: diploi-pull-secret
       containers:
         - name: app
-          image: ghost:5-alpine
+          image: ghost:alpine
           imagePullPolicy: Always
           ports:
             - containerPort: 2368
-          {{- if eq .Values.stage "development" }}
-          workingDir: /app/{{ .Values.identifier }}
-          {{- end }}
           env:
             {{- range .Values.env }}
             - name: {{ .identifier }}
@@ -50,19 +47,16 @@ spec:
             {{- end }}
             - name: url
               value: {{ .Values.hosts.app }}
+            - name: paths__contentPath
+              value: /app/{{ .Values.identifier }}
           volumeMounts:
             {{- if hasKey .Values.storage "code" }}
             - name: app-mount
               mountPath: /app
             {{- end }}
-            - name: ghost-content
-              mountPath: /var/lib/ghost/content
       volumes:
         {{- if hasKey .Values.storage "code" }}
         - name: app-mount
           hostPath:
             path: {{ .Values.storage.code.hostPath }}
         {{- end }}
-        - name: ghost-content
-          hostPath:
-            path: {{ $.Values.storage.ghost.hostPath }}
