@@ -30,26 +30,12 @@ spec:
       terminationGracePeriodSeconds: 10
       imagePullSecrets:
         - name: diploi-pull-secret
-      {{- if eq .Values.stage "development"}}
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-      initContainers:
-        - name: install-dependencies
-          image: {{ .Values.images.app }}
-          imagePullPolicy: Always
-          command: ['bun', 'install']
-          workingDir: /app/{{ .Values.identifier }}
-          volumeMounts:
-            - name: app-mount
-              mountPath: /app
-      {{- end }}
       containers:
         - name: app
-          image: {{ .Values.images.app }}
+          image: ghost:alpine
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 2368
           {{- if eq .Values.stage "development" }}
           workingDir: /app/{{ .Values.identifier }}
           {{- end }}
@@ -58,10 +44,14 @@ spec:
             - name: {{ .identifier }}
               value: {{ .value | quote }}
             {{- end }}
-            - name: APP_PUBLIC_URL
+            {{- if eq .Values.stage "development" }}
+            - name: NODE_ENV
+              value: development
+            {{- end }}
+            - name: url
               value: {{ .Values.hosts.app }}
-            - name: STAGE
-              value: {{ .Values.stage }}
+            - name: paths__contentPath
+              value: /app/{{ .Values.identifier }}
           volumeMounts:
             {{- if hasKey .Values.storage "code" }}
             - name: app-mount
