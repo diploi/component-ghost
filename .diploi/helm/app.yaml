@@ -49,6 +49,8 @@ spec:
               value: https://{{ .Values.hosts.app }}
             - name: paths__contentPath
               value: /app/{{ .Values.identifier }}
+            - name: logging__transports
+              value: '["stdout"]'
           volumeMounts:
             {{- if hasKey .Values.storage "code" }}
             - name: app-mount
