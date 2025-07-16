@@ -1,7 +1,7 @@
 # This will be set by the GitHub action to the folder containing this component.
 ARG FOLDER=/app
 
-FROM oven/bun:1.2-slim AS base
+FROM ghost:alpine
 
 COPY . /app
 WORKDIR ${FOLDER}
@@ -9,9 +9,3 @@ WORKDIR ${FOLDER}
 ENV NODE_ENV=development
 
 USER 1000:1000
-
-EXPOSE 3000/tcp
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
-
-ENTRYPOINT ["bun", "dev"]

@@ -32,7 +32,7 @@ spec:
         - name: diploi-pull-secret
       containers:
         - name: app
-          image: ghost:alpine
+          image: {{ .Values.images.app }}
           imagePullPolicy: Always
           ports:
             - containerPort: 2368
