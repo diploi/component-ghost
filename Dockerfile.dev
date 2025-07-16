@@ -3,7 +3,7 @@ ARG FOLDER=/app
 
 FROM ghost:alpine
 
-COPY . /app
+COPY --chown=1000:1000 . /app
 
 ENV NODE_ENV=development
 ENV paths__contentPath=${FOLDER}
