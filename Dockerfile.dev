@@ -4,7 +4,6 @@ ARG FOLDER=/app
 FROM ghost:alpine
 
 COPY . /app
-WORKDIR ${FOLDER}
 
 ENV NODE_ENV=development
 
