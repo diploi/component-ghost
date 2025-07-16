@@ -6,5 +6,6 @@ ARG FOLDER=/app
 COPY . /app
 
 ENV NODE_ENV=production
+ENV paths__contentPath=${FOLDER}
 
 USER 1000:1000
