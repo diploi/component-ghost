@@ -53,6 +53,8 @@ spec:
             {{- if eq .Values.stage "development" }}
             - name: paths__contentPath
               value: /app/{{ .Values.identifier }}
+            - name: NODE_ENV
+              value: development
             {{- end }}
             - name: url
               value: https://{{ .Values.hosts.app }}

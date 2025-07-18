@@ -4,11 +4,10 @@ ARG FOLDER=/app
 FROM ghost:alpine
 
 COPY --chown=1000:1000 . /app
-COPY --chown=1000:1000 ./adapters/DiploiFilesStorage.j[s] /var/lib/ghost/versions/$GHOST_VERSION/core/server/adapters/storage/
-COPY --chown=1000:1000 ./adapters/DiploiImagesStorage.j[s] /var/lib/ghost/versions/$GHOST_VERSION/core/server/adapters/storage/
-COPY --chown=1000:1000 ./adapters/DiploiMediaStorage.j[s] /var/lib/ghost/versions/$GHOST_VERSION/core/server/adapters/storage/
 
-ENV NODE_ENV=production
+# Copy Diploi storage adapters to the Ghost core
+RUN cp ${FOLDER}/adapters/Diploi*Storage.js /var/lib/ghost/versions/$GHOST_VERSION/core/server/adapters/storage/
+
 ENV paths__contentPath=${FOLDER}
 
 USER 1000:1000

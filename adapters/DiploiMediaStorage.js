@@ -1,6 +1,6 @@
 // # Local File System Media Storage module
 // The (default) module for storing media, modified to use the Diploi volume mount /data
-// This file will be moved to the /core/server/adapters/storage folder by the Dockerfiles.
+// This file will be moved to the /core/server/adapters/storage folder by the Dockerfile.
 const config = require('../../../shared/config');
 const LocalStorageBase = require('./LocalStorageBase');
 
