@@ -1,5 +1,5 @@
 // # Local File System Image Storage module
-// The (default) module for storing images, using the local file system
+// The (default) module for storing images, modified to use the Diploi volume mount /data
 const config = require('../../../shared/config');
 const urlUtils = require('../../../shared/url-utils');
 const LocalStorageBase = require('./LocalStorageBase');

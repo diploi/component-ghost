@@ -21,6 +21,12 @@ environmentVariables:
     defaultValue: mysql
   - identifier: database__connection__database
     defaultValue: ghost
+  - identifier: storage__active
+    defaultValue: DiploiImagesStorage
+  - identifier: storage__media__adapter
+    defaultValue: DiploiMediaStorage
+  - identifier: storage__files__adapter
+    defaultValue: DiploiFilesStorage
 
 images:
   - identifier: app
