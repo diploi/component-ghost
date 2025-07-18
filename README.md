@@ -8,6 +8,9 @@ Uses the official [ghost](https://hub.docker.com/_/ghost/) Docker image.
 
 ## Operation
 
+Includes custom storage adapters for Diploi. These save images, files and media to a storage volume that will persist between reboots.
+This volume can be found at `/data` on the Ghost `app` container.
+
 ### Development
 
 When running a development environment, Ghost will be run in development mode too.
