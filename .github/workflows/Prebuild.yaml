@@ -25,6 +25,8 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}
           tags: |
+            type=ref,event=branch
+            type=ref,event=tag
             # Set latest tag for default branch
             type=raw,value=latest,enable={{is_default_branch}}
 
