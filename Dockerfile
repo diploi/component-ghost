@@ -1,7 +1,7 @@
+FROM ghost:alpine
+
 # This will be set by the GitHub action to the folder containing this component.
 ARG FOLDER=/app
-
-FROM ghost:alpine
 
 COPY --chown=1000:1000 . /app
 
