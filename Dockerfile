@@ -6,7 +6,7 @@ ARG FOLDER=/app
 COPY --chown=1000:1000 . /app
 
 # Copy Diploi storage adapters to the Ghost core
-RUN cp ${FOLDER}/adapters/Diploi*Storage.js /var/lib/ghost/versions/$GHOST_VERSION/core/server/adapters/storage/
+RUN cp ${FOLDER}/adapters/Diploi*Storage.js /var/lib/ghost/versions/$GHOST_VERSION/core/server/adapters/storage/ 2>/dev/null || :
 
 ENV paths__contentPath=${FOLDER}
 
