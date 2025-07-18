@@ -6,10 +6,6 @@ FROM ghost:alpine
 COPY --chown=1000:1000 . /app
 COPY --chown=1000:1000 ./.diploi/diploi-storage-adapter.js /var/lib/ghost/versions/$GHOST_VERSION/core/server/adapters/storage/
 
-# Initialize the data mount
-RUN mkdir /data
-RUN chown 1000:1000 /data
-
 ENV NODE_ENV=production
 ENV paths__contentPath=${FOLDER}
 
