@@ -4,6 +4,7 @@ ARG FOLDER=/app
 FROM ghost:alpine
 
 COPY --chown=1000:1000 . /app
+COPY --chown=1000:1000 ./.diploi/diploi-storage-adapter.js /var/lib/ghost/content/adapters/storage/
 
 ENV NODE_ENV=development
 ENV paths__contentPath=${FOLDER}
