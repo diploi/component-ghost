@@ -1,4 +1,4 @@
-FROM ghost:alpine
+FROM ghost:5.130.0-alpine
 
 # This will be set by the GitHub action to the folder containing this component.
 ARG FOLDER=/app
