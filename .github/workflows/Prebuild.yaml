@@ -36,9 +36,6 @@ jobs:
         id: set-tags
         run: |
           TAGS="${{ steps.meta.outputs.tags }}"
-          if [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
-            TAGS="${TAGS},${{ env.REGISTRY }}/${{ github.repository }}:latest"
-          fi
           echo "tags=$TAGS" >> $GITHUB_ENV
 
       - name: Build and push
