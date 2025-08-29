@@ -2,6 +2,9 @@
 
 # Ghost Component for Diploi
 
+Start with a free trial, no account required
+https://diploi.com/component/ghost
+
 Run [Ghost](https://ghost.org/) on Diploi.
 
 Uses the official [ghost](https://hub.docker.com/_/ghost/) Docker image.
