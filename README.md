@@ -2,6 +2,10 @@
 
 # Ghost Component for Diploi
 
+[![launch with diploi badge](https://diploi.com/launch.svg)](https://diploi.com/component/ghost)
+[![component on diploi badge](https://diploi.com/component.svg)](https://diploi.com/component/ghost)
+[![latest tag badge](https://badgen.net/github/tag/diploi/component-ghost)](https://diploi.com/component/ghost)
+
 Start with a free trial, no account required
 https://diploi.com/component/ghost
 
