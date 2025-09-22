@@ -52,7 +52,7 @@ spec:
             {{- end }}
             {{- if eq .Values.stage "development" }}
             - name: paths__contentPath
-              value: /app/{{ .Values.identifier }}
+              value: /app{{ .Values.folder }}
             - name: NODE_ENV
               value: development
             {{- end }}
