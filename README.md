@@ -44,4 +44,5 @@ Depending on which features you have been working on, you might have to apply th
 
 ## Links
 
+- [Adding Ghost to a project](https://docs.diploi.com/building/components/ghost)
 - [Ghost documentation](https://ghost.org/docs/)
