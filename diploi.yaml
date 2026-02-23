@@ -3,18 +3,12 @@ type: component
 name: Ghost
 description: Official Diploi component for Ghost
 
-contexts:
-  - name: app
-    identifier: app
+supportsAdditionalHosts: { serviceName: 'app'}
 
 hosts:
   - name: Ghost
     identifier: app
-    urlFormat: '[label].[default-domain]'
-
-connectionStrings:
-  - name: Internal Address
-    value: http://app.${DIPLOI_NAMESPACE}:3000
+    port: 2368
 
 environmentVariables:
   - identifier: database__client
@@ -30,12 +24,7 @@ environmentVariables:
 
 images:
   - identifier: app
-    prebuildImage: ghcr.io/diploi/component-ghost:[tag]
-
-logs:
-  - name: Ghost Log
-    type: log
-    labelSelector: app=app
+    prebuildImage: public.ecr.aws/p8t2q7f4/diploi/component-ghost:[tag]
 
 storage:
   - identifier: ghost
