@@ -2,6 +2,7 @@
 // The (default) module for storing media, modified to use the Diploi volume mount /data
 // This file will be moved to the /core/server/adapters/storage folder by the Dockerfile.
 const config = require('../../../shared/config');
+const urlUtils = require('../../../shared/url-utils');
 const LocalStorageBase = require('./LocalStorageBase');
 
 const messages = {
@@ -14,7 +15,7 @@ class DiploiMediaStorage extends LocalStorageBase {
   constructor() {
     super({
       storagePath: '/data/media',
-      staticFileURLPrefix: config.getStaticUrlPrefix('media'),
+      staticFileURLPrefix: urlUtils.STATIC_MEDIA_URL_PREFIX,
       siteUrl: config.getSiteUrl(),
       errorMessages: messages,
     });
