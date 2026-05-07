@@ -1,9 +1,5 @@
 apiVersion: apps/v1
-{{- if eq .Values.stage "development"}}
-kind: StatefulSet
-{{- else }}
 kind: Deployment
-{{- end }}
 metadata:
   name: app
   labels:
@@ -12,10 +8,10 @@ spec:
   selector:
     matchLabels:
       app: app
-  {{- if eq .Values.stage "development"}}
-  serviceName: app
-  {{- else }}
   strategy:
+  {{- if eq .Values.stage "development"}}
+    type: Recreate
+  {{- else }}
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 25%
