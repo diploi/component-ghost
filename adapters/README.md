@@ -16,3 +16,5 @@ This default adapter can be found in `core/server/adapters/scheduling/Scheduling
 
 ### Custom Adapter
 To override any of the default adapters, you have to add a folder (`content/adapters/storage` or `content/adapters/scheduling`) and copy your adapter to it.
+
+This component sets `paths__contentPath=/app`, so Ghost loads the Diploi storage adapters from `adapters/storage` without copying them into Ghost core.
